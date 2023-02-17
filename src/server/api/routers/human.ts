@@ -18,6 +18,4 @@ export const HumanRouter = createTRPCRouter({
         followingCount:10,
       };
     }),
-
-
 });
