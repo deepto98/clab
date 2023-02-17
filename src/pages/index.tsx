@@ -23,8 +23,8 @@ const Home: NextPage = () => {
               <div className="relative shrink-0 basis-[100px]">
                 <div className="absolute top-[-50px] h-[100px] w-[100px] border-4 border-white rounded-full bg-red-300 "></div>
               </div>
-              <div className=" ml-3.5">
-                <p className="text-xl">Deepto</p>
+              <div className="relative ml-3.5">
+                <p className=" absolute top-[-30px] text-xl">Deepto</p>
                 <p className="text-xs top-2">ddutta98@gmail.com</p>
               </div>
             </div>
