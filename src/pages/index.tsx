@@ -5,6 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "../utils/api";
 import Spinner from "../components/Spinner";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   const human = api.human.getHumanByUsername.useQuery({ username: "deepto" });
@@ -27,7 +28,17 @@ const Home: NextPage = () => {
           <div className="mx-6 mt-2">
             <div className="flex">
               <div className="relative shrink-0 basis-[100px]">
-                <div className="absolute top-[-50px] h-[100px] w-[100px] rounded-full border-4 border-white bg-red-300 "></div>
+                {/* Image Avatar */}
+                <div className="absolute top-[-50px] h-[100px] w-[100px] overflow-hidden rounded-full border-4 border-white bg-red-300 ">
+                  {human.data.avatar && (
+                    <Image
+                      width={100}
+                      alt="Human.jpg"
+                      height={100}
+                      src={human.data.avatar}
+                    />
+                  )}
+                </div>
               </div>
               {/* Load the data from human */}
               <div className="relative ml-3.5 min-w-0">
@@ -40,11 +51,15 @@ const Home: NextPage = () => {
             <div className="mt-7">{human.data.summary}</div>
             <div className="mt-3.5 flex">
               <p>
-                <span className="font-semibold">{human.data.followersCount}</span>
+                <span className="font-semibold">
+                  {human.data.followersCount}
+                </span>
                 &nbsp;Followers
               </p>
               <p>
-                <span className="ml-5 font-semibold">{human.data.followingCount}</span>
+                <span className="ml-5 font-semibold">
+                  {human.data.followingCount}
+                </span>
                 &nbsp;Following
               </p>
             </div>

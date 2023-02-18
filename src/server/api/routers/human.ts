@@ -8,8 +8,8 @@ export const HumanRouter = createTRPCRouter({
     .query(({ input }) => {
       return {
         id: "1234",
-        avatar:"/avatar.png",
-        header:"/header.png",
+        avatar:"/avatar.jpg",
+        header:"/header.jpg",
         name:"deepto",
         username:"ddepp98",
         address:"ddutta98@gmail.com",
