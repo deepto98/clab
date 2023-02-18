@@ -1,8 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
-
+import className from "classnames";
 import { api } from "../utils/api";
 import Spinner from "../components/Spinner";
 import Image from "next/image";
@@ -22,14 +20,23 @@ const Home: NextPage = () => {
 
       {human.data && (
         <div className="max-w-[615px]">
+          {/* Header Image */}
           <div className="aspect-w-3 aspect-h-1 bg-red-200 text-center">
-            <h1 className="p-1">CLAB</h1>
+            {human.data.header && (
+              <Image alt="header" width={615} height={205} src={human.data.header} />
+            )}
           </div>
           <div className="mx-6 mt-2">
             <div className="flex">
               <div className="relative shrink-0 basis-[100px]">
                 {/* Image Avatar */}
-                <div className="absolute top-[-50px] h-[100px] w-[100px] overflow-hidden rounded-full border-4 border-white bg-red-300 ">
+                <div
+                  className={className(
+                    // Conditional style
+                    "absolute top-[-50px] h-[100px] w-[100px] overflow-hidden rounded-full border-4 border-white bg-red-300",
+                    { "border-opacity-25 bg-clip-padding": human.data.avatar }
+                  )}
+                >
                   {human.data.avatar && (
                     <Image
                       width={100}
